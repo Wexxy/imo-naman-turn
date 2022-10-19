@@ -16,4 +16,9 @@ public class MenuBtn : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Pause()
+    {
+        Debug.Log("Pause");
+    }
 }
