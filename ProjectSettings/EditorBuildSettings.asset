@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ThrowMaster/Scenes/Menu.unity
+    guid: 17e4bdb486e9078498ffaa042fddf25a
+  - enabled: 1
+    path: Assets/ThrowMaster/Scenes/ThrowMaster.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/ThrowMaster/Scenes/Menu.unity
+    guid: 80144388ebc2b4441bdf3958993d0e46
   m_configObjects: {}
