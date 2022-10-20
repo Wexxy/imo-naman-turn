@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private enum GameState {Player1Turn,Player1Throw, Player2Turn, Player2Throw, End};
-    private float timer = 5f;
+    // private float timer = 5f;
     void Start()
     {
         

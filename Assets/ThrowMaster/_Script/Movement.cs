@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     private float gravity = 9.87f;
     private float verticalSpeed = 0;
     private bool isGrounded;
-
+    private float jumpHeight = 2;
     public Transform target;
 
     void Start()
@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Move();
+        Jump();
     }
 
     private void Move()
@@ -34,6 +35,7 @@ public class Movement : MonoBehaviour
         if (characterController.isGrounded)
         {
             verticalSpeed = 0;
+            animator.SetBool("Jump", false);
         }
         else
         {
@@ -43,9 +45,20 @@ public class Movement : MonoBehaviour
 
         Vector3 move = transform.forward * movement + transform.right * 0;
         characterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
-        animator.SetFloat("Speed", characterController.velocity.z, motionSmoothTime, Time.deltaTime);
+        animator.SetFloat("Speed", -characterController.velocity.x, motionSmoothTime, Time.deltaTime);
     }
-    private void Aim() 
+    private void Jump()
+    {
+        if (Input.GetKeyDown("space") && characterController.isGrounded)
+        {
+            animator.SetBool("Jump", true);
+            Vector3 characterJump = new Vector3(0, verticalSpeed, 0);
+            characterController.Move(jumpHeight * Time.deltaTime * characterJump * Time.deltaTime);
+            verticalSpeed += 5;
+        }
+
+    }
+    private void Aim()
     {
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
     }

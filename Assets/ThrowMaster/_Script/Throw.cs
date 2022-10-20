@@ -7,8 +7,33 @@ public class Throw : MonoBehaviour
     public GameObject projectile;
     public GameObject weapon;
     public GameObject projectileSpawn;
-    
+    public LineRenderer trajectory;
+    void SetTrajectory(bool active)
+    {
+        trajectory.enabled = active;
+    }
 
+    void ShowTrajectory()
+    {
+        SetTrajectory(true);
+        int segmentCount = 25;
+        Vector3[] segments = new Vector3[segmentCount];
+        segments[0] = projectileSpawn.transform.position;
+
+        Vector3 velocity = projectileSpawn.transform.up * force;
+
+        for (int i = 0; i < segmentCount; i++)
+        {
+            float timeCurve = (i * Time.fixedDeltaTime);
+            segments[i] = segments[0] + velocity * timeCurve + 0.5f * Physics.gravity * Mathf.Pow(timeCurve, 2);
+        }
+        trajectory.positionCount = segmentCount;
+
+        for (int j = 0; j < segmentCount ; j++)
+        {
+            trajectory.SetPosition(j, segments[j]);
+        }
+    }
     public float force = 0f;
     private bool charging = true;
     // Start is called before the first frame update
@@ -18,6 +43,7 @@ public class Throw : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            ShowTrajectory();
             if (charging)
             {
                 force += .2f;
@@ -37,6 +63,7 @@ public class Throw : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            SetTrajectory(false);
             var throwProjectile = Instantiate(projectile, projectileSpawn.transform.position, weapon.transform.rotation);
             throwProjectile.GetComponent<Rigidbody>().velocity = projectileSpawn.transform.up * force;
             force = 0f;
