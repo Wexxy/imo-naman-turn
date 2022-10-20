@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4949740904601759485}
   - component: {fileID: 1497666022490880728}
   - component: {fileID: 6451278216609335486}
+  - component: {fileID: 7284816912946988354}
   m_Layer: 0
   m_Name: StoneProjectile
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4964857224075414973}
   m_LocalRotation: {x: -0.0068838596, y: -0.001917515, z: 0.8512473, w: -0.524716}
   m_LocalPosition: {x: -0.114, y: 0.587, z: 0.527}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,3 +115,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.33
   m_Center: {x: 0.01, y: 0.2, z: 0}
+--- !u!114 &7284816912946988354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964857224075414973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d26884a7f10bff4d9577fb7b16b15ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

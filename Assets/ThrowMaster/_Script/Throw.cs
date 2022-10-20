@@ -67,6 +67,15 @@ public class Throw : MonoBehaviour
             var throwProjectile = Instantiate(projectile, projectileSpawn.transform.position, weapon.transform.rotation);
             throwProjectile.GetComponent<Rigidbody>().velocity = projectileSpawn.transform.up * force;
             force = 0f;
+            GameManager.Instance.SetGameState(GameState.Throw);
+            if (GameManager.Instance.CurrentPlayer == Player.Player1)
+            {
+                GameManager.Instance.CurrentPlayer = Player.Player1Throw;
+            }
+            else if (GameManager.Instance.CurrentPlayer == Player.Player2)
+            {
+                GameManager.Instance.CurrentPlayer = Player.Player2Throw;
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Player1Movement : MonoBehaviour
 {
     public CharacterController characterController;
     public Animator animator;
@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     private float jumpHeight = 2;
     public Transform target;
 
+    private Vector3 move;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -25,12 +27,10 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Move();
-        Jump();
     }
 
     private void Move()
     {
-        float movement = Input.GetAxis("Horizontal");
 
         if (characterController.isGrounded)
         {
@@ -42,24 +42,19 @@ public class Movement : MonoBehaviour
             verticalSpeed -= gravity * Time.deltaTime;
         }
         Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
-
-        Vector3 move = transform.forward * movement + transform.right * 0;
-        characterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
-        animator.SetFloat("Speed", -characterController.velocity.x, motionSmoothTime, Time.deltaTime);
-    }
-    private void Jump()
-    {
-        if (Input.GetKeyDown("space") && characterController.isGrounded)
+        if (GameManager.Instance.CurrentPlayer == Player.Player1)
         {
-            animator.SetBool("Jump", true);
-            Vector3 characterJump = new Vector3(0, verticalSpeed, 0);
-            characterController.Move(jumpHeight * Time.deltaTime * characterJump * Time.deltaTime);
-            verticalSpeed += 5;
+            float movement = Input.GetAxis("Horizontal");
+            move = transform.forward * movement + transform.right * 0;
+            animator.SetFloat("Speed", -characterController.velocity.x, motionSmoothTime, Time.deltaTime);
+            if (Input.GetKeyDown("space") && verticalSpeed == 0)
+            {
+                animator.SetBool("Jump", true);
+                Vector3 characterJump = new Vector3(0, verticalSpeed, 0);
+                characterController.Move(jumpHeight * Time.deltaTime * characterJump * Time.deltaTime);
+                verticalSpeed += 5;
+            }
         }
-
-    }
-    private void Aim()
-    {
-        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+        characterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
     }
 }

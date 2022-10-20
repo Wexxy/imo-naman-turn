@@ -5,8 +5,9 @@ using UnityEngine;
 public class Target : MonoBehaviour
 { 
     public GameObject target;
+
     void Update()
-    {
-        transform.up = target.transform.position;   
+    {   
+        transform.LookAt(target.transform);
     }
 }
