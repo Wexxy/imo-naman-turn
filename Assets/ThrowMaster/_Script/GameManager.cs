@@ -27,7 +27,14 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        SetGameState(GameState.Player2Turn);
+        StartCoroutine(Game());
+    }
+
+    IEnumerator Game()
+    {
+        SetGameState(GameState.Throw);
+        yield return new WaitForSeconds(1);
+        SetGameState(GameState.Player1Turn);
     }
 
     public void SwitchPlayer()
@@ -64,7 +71,7 @@ public class GameManager : MonoBehaviour
                 Player1.GetComponent<RigBuilder>().enabled = false;
                 Player2.GetComponent<RigBuilder>().enabled = false;
                 Player1Camera.SetActive(false);
-                Player2Camera.SetActive(true);
+                Player2Camera.SetActive(false);
                 ProjectileCamera.SetActive(true);
                 break;
             case GameState.Player2Turn:
@@ -78,6 +85,13 @@ public class GameManager : MonoBehaviour
                 ProjectileCamera.SetActive(false);
                 break;
             case GameState.End:
+                Player1.GetComponent<Throw>().enabled = false;
+                Player2.GetComponent<Throw>().enabled = false;
+                Player1.GetComponent<RigBuilder>().enabled = false;
+                Player2.GetComponent<RigBuilder>().enabled = false;
+                Player1Camera.SetActive(false);
+                Player2Camera.SetActive(false);
+                ProjectileCamera.SetActive(true);
                 break;
         }
 

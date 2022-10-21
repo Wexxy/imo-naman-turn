@@ -11,15 +11,26 @@ public class Projectile : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
+        // Hit = true;
+        if (GameManager.Instance.CurrentPlayer == Player.Player1Throw)
+        {
+           if (other.gameObject.tag == "Player2" && !Hit)
+        {
+            Hit = true;
+            GameManager.Instance.Player2Health -= 20;
+        } 
+        }
+        else if (GameManager.Instance.CurrentPlayer == Player.Player2Throw) 
+        {
         if (other.gameObject.tag == "Player1" && !Hit)
         {
             Hit = true;
             GameManager.Instance.Player1Health -= 20;
         }
-        else if (other.gameObject.tag == "Player2" && !Hit)
+        }
+        if (GameManager.Instance.Player1Health <= 0 || GameManager.Instance.Player2Health <= 0)
         {
-            Hit = true;
-            GameManager.Instance.Player2Health -= 20;
+            GameManager.Instance.SetGameState(GameState.End);
         }
     }
     IEnumerator ChangeState()
