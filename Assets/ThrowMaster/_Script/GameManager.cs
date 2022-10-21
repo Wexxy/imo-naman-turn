@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject Player1Camera;
     public GameObject Player2Camera;
     public GameObject ProjectileCamera;
-    private float timer = 5f;
+    public float timer = 5f;
     public GameObject Player1;
     public GameObject Player2;
 

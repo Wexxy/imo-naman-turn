@@ -669,7 +669,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982362329}
-  m_LocalRotation: {x: -0.0014363831, y: 0.99744844, z: -0.068216376, w: -0.021002555}
+  m_LocalRotation: {x: -0.0014363801, y: 0.99744844, z: -0.06821643, w: -0.021002494}
   m_LocalPosition: {x: 24.139997, y: 17.710001, z: 7.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -913,7 +913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263598038}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 12, y: 4.2, z: 18.8}
+  m_LocalPosition: {x: 12.09, y: 7.59, z: 21.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1085,7 +1085,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856446663}
-  m_LocalRotation: {x: -0.0014363831, y: 0.99744844, z: -0.068216376, w: -0.021002555}
+  m_LocalRotation: {x: -0.0014363801, y: 0.99744844, z: -0.06821643, w: -0.021002494}
   m_LocalPosition: {x: 24.139997, y: 17.710001, z: 7.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1132,6 +1132,7 @@ MonoBehaviour:
   Player1Camera: {fileID: 1856446663}
   Player2Camera: {fileID: 1229290797}
   ProjectileCamera: {fileID: 1263598038}
+  timer: 5
   Player1: {fileID: 1767393617}
   Player2: {fileID: 1190602501680763}
   Player1Health: 100
@@ -1179,7 +1180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433839654618589598, guid: 128eda8ecfaacbb4d94d6ae144457026, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3433839654618589598, guid: 128eda8ecfaacbb4d94d6ae144457026, type: 3}
       propertyPath: m_LocalPosition.y

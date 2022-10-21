@@ -16,10 +16,17 @@ public class Player2Movement : MonoBehaviour
     private float jumpHeight = 2;
     public Transform target;
 
+    public float moveTime;
+
+    private Vector3 move;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         // animator = GetComponent<Animator>();
+    }
+    private void OnEnable() {
+        moveTime = Time.time;    
     }
 
     void Update()
@@ -41,7 +48,7 @@ public class Player2Movement : MonoBehaviour
             verticalSpeed -= gravity * Time.deltaTime;
         }
         Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
-        if (GameManager.Instance.CurrentPlayer == Player.Player2)
+        if (GameManager.Instance.CurrentPlayer == Player.Player2 && Time.time - moveTime > GameManager.Instance.timer);
         {
             Vector3 move = transform.forward * movement + transform.right * 0;
             characterController.Move(-speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
@@ -52,7 +59,9 @@ public class Player2Movement : MonoBehaviour
                 Vector3 characterJump = new Vector3(0, verticalSpeed, 0);
                 characterController.Move(jumpHeight * Time.deltaTime * characterJump * Time.deltaTime);
             }
-
         }
+        characterController.Move(speed * Time.deltaTime * move + gravityMove * Time.deltaTime);
+        move = new Vector3(0f, 0f, 0f);
+        animator.SetFloat("Speed", -characterController.velocity.x, motionSmoothTime, Time.deltaTime);
     }
 }
