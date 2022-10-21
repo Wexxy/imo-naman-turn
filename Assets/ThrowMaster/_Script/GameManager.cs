@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.UI;
 
 public enum GameState { Player1Turn,Player2Turn, Throw, End };
 
@@ -21,8 +22,10 @@ public class GameManager : MonoBehaviour
     public GameObject Player2;
 
     public float Player1Health = 100;
-
+    public Image Player1Healthbar;
     public float Player2Health = 100;
+    public Image Player2Healthbar;
+
     void Awake()
     {
         Instance = this;
