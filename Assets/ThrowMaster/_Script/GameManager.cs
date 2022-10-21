@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Game()
     {
         SetGameState(GameState.Throw);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         SetGameState(GameState.Player1Turn);
     }
 
