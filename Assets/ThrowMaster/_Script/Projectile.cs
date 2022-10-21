@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
-{
+{   
     private bool Hit = false;
     private void Awake()
     {
@@ -17,7 +17,8 @@ public class Projectile : MonoBehaviour
            if (other.gameObject.tag == "Player2" && !Hit)
         {
             Hit = true;
-            GameManager.Instance.Player2Health -= 20;
+            
+            GameManager.Instance.Player2Health -= gameObject.GetComponent<Rigidbody>().velocity.magnitude;
         } 
         }
         else if (GameManager.Instance.CurrentPlayer == Player.Player2Throw) 
@@ -25,7 +26,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.tag == "Player1" && !Hit)
         {
             Hit = true;
-            GameManager.Instance.Player1Health -= 20;
+            GameManager.Instance.Player1Health -= gameObject.GetComponent<Rigidbody>().velocity.magnitude;
         }
         }
         if (GameManager.Instance.Player1Health <= 0 || GameManager.Instance.Player2Health <= 0)

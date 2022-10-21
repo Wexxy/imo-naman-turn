@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject Player2Camera;
     public GameObject ProjectileCamera;
     public float timer = 5f;
+
+    public float turnStart;
     public GameObject Player1;
     public GameObject Player2;
 
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             SetGameState(GameState.Player1Turn);
         }
+        turnStart = Time.time;
     }
 
     public void SetGameState(GameState state)
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Player2Turn:
                 CurrentPlayer = Player.Player2;
-                Player1.GetComponent<RigBuilder>().enabled = false; ;
+                Player1.GetComponent<RigBuilder>().enabled = false;
                 Player2.GetComponent<RigBuilder>().enabled = true;
                 Player2.GetComponent<Throw>().enabled = true;
                 Player1.GetComponent<Throw>().enabled = false;
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
                 ProjectileCamera.SetActive(false);
                 break;
             case GameState.End:
+                CurrentPlayer = Player.Player1Throw;
                 Player1.GetComponent<Throw>().enabled = false;
                 Player2.GetComponent<Throw>().enabled = false;
                 Player1.GetComponent<RigBuilder>().enabled = false;
